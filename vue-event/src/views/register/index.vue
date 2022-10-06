@@ -7,14 +7,16 @@
           <el-input type="" placeholder="请输入用户名" v-model="regFrom.username" clearable></el-input>
         </el-form-item>
         <el-form-item prop="password" :inline-message="true">
-          <el-input type="password" placeholder="请输入密码" v-model="regFrom.password" show-password clearable></el-input>
+          <el-input type="password" placeholder="请输入密码" v-model="regFrom.password" show-password clearable
+            :change="regFrom.password?(repasswordIsshow = true):repasswordIsshow"></el-input>
         </el-form-item>
-        <el-form-item prop="repassword" :inline-message="true">
-          <el-input type="password" placeholder="请再次输入密码" v-model="regFrom.repassword" show-password clearable>
+        <el-form-item prop="repassword" :inline-message="true" v-show="repasswordIsshow">
+          <el-input type="password" placeholder="请再次输入密码" v-model="regFrom.repassword" show-password clearable
+            @keyup.enter.native="subReg">
           </el-input>
         </el-form-item>
         <el-form-item class="sub">
-          <el-button type="primary" @click="subReg()">注册</el-button>
+          <el-button type="primary" @click="subReg">注册</el-button>
           <el-button type="text" @click="gotoLogin">去登陆</el-button>
         </el-form-item>
       </el-form>
@@ -39,6 +41,7 @@ export default {
         password: '',
         repassword: ''
       },
+      repasswordIsshow: false,
       regRules: {
         username: [
           { required: true, message: '请输入用户名', trigger: 'blur' },
@@ -77,9 +80,10 @@ export default {
           return false
         }
       })
-      console.log('11112323')
     },
     gotoLogin() {
+      this.$refs.regRef.resetFields()
+      this.$router.push('/login')
       console.log(222)
     }
   }
@@ -125,7 +129,7 @@ export default {
   width: 100%;
 }
 
-.el-form-item__content {
+/deep/.el-form-item__content {
   line-height: 0;
 }
 
