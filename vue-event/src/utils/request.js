@@ -18,14 +18,14 @@ myAxios.interceptors.request.use(function (config) {
   return Promise.reject(error)
 }
 )
-// 相应拦截器
+// 响应拦截器
 myAxios.interceptors.response.use(function (response) {
   // 响应 http 状态码为 2xx，3xx 时触发成功的回掉形参的 response 是“成功的结果”
   return response
 }, function (error) {
   // 响应 http 状态码为 4xx，5xx 时触发成功的回掉形参的 error 是“失败的结果”
   console.dir('error', error)
-  // 无效的 token
+  // 无效的 token（这里是配置后台让登录过期）
   if (error.response.state === 401) {
     // 把 Vuex 中的 token 重置为空，并跳转到登录页
     store.commit('updateToken', '')

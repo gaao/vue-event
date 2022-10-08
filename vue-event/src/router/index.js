@@ -3,9 +3,10 @@ import VueRouter from 'vue-router'
 // import HomeView from '../views/HomeView.vue'
 
 import store from '@/store'
+
 import Register from '@/views/register'
 import Login from '@/views/login'
-import HomeView from '@/views/layout'
+const HomeView = () => import('@/views/layout') // 这种方式个人感觉没有下面那种好，这种还需要起变量名字
 // import ArtCat from '@/views/art/art-cat'
 
 Vue.use(VueRouter)
@@ -21,13 +22,13 @@ const routes = [
   //   name: 'about',
   //   // route level code-splitting
   //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
+  //   // which is lazy-loaded when the route is visited.懒加载方式
   //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   // }
   {
-    path: '/',
+    path: '/', // 默认首页路径
     component: HomeView,
-    redirect: '/home',
+    redirect: '/home', // 重定向为后台返回路径首页路径
     children: [
       {
         path: 'home',
@@ -58,7 +59,6 @@ const routes = [
   // {
   //   path: '/home',
   //   component: HomeView,
-  //   redirect: '/'
   // },
   {
     path: '/reg',
