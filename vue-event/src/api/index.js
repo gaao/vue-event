@@ -23,7 +23,7 @@ export const loginAPI = ({ username, password }) => {
     }
   })
 }
-
+// 用户相关 - 获取 - 用户基本资料
 export const getUserInfoAPI = () => {
   return request({
     url: '/my/userinfo'
@@ -33,6 +33,7 @@ export const getUserInfoAPI = () => {
     // }
   })
 }
+// 用户相关 - 更新 - 用户基本资料
 export const putUserInfoAPI = ({ id, username, nickname, email, user_pic }) => {
   return request({
     url: '/my/userinfo',
@@ -46,6 +47,7 @@ export const putUserInfoAPI = ({ id, username, nickname, email, user_pic }) => {
     }
   })
 }
+// 用户相关 - 更新 - 用户头像
 export const updateUserAvatarAPI = (avatar) => {
   return request({
     url: '/my/update/avatar',
@@ -55,6 +57,7 @@ export const updateUserAvatarAPI = (avatar) => {
     }
   })
 }
+// 用户相关 - 更新 - 用户密码
 export const updateUserPwdAPI = ({ old_pwd, new_pwd, re_pwd }) => {
   return request({
     url: '/my/updatepwd',
@@ -66,16 +69,19 @@ export const updateUserPwdAPI = ({ old_pwd, new_pwd, re_pwd }) => {
     }
   })
 }
+// 侧边栏
 export const getMenusAPI = () => {
   return request({
     url: '/my/menus'
   })
 }
+// 文章分类 - 获取 - 文章分类
 export const getCateListAPI = () => {
   return request({
     url: '/my/cate/list'
   })
 }
+// 文章分类 - 增加 - 文章分类
 export const addCateAPI = ({ cate_name, cate_alias }) => {
   return request({
     url: '/my/cate/add',
@@ -86,6 +92,7 @@ export const addCateAPI = ({ cate_name, cate_alias }) => {
     }
   })
 }
+// 文章分类 - 获取 - 文章分类详情
 export const getCateInfoAPI = (id) => {
   return request({
     url: '/my/cate/info',
@@ -94,6 +101,7 @@ export const getCateInfoAPI = (id) => {
     }
   })
 }
+// 文章分类 - 更新 - 文章分类
 export const updateCateInfoAPI = ({ id, cate_name, cate_alias }) => {
   return request({
     url: '/my/cate/info',
@@ -105,6 +113,7 @@ export const updateCateInfoAPI = ({ id, cate_name, cate_alias }) => {
     }
   })
 }
+// 文章分类 - 删除 - 文章分类
 export const delCateAPI = (id) => {
   return request({
     url: '/my/cate/del',
